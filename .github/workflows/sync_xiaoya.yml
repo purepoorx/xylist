@@ -23,5 +23,5 @@ jobs:
         with:
           repo_token: ${{ secrets.PAT }}
           file: ./xylist
-          tag: ${{ refs/heads }}
+          tag: ${{ github.ref }}
           overwrite: true
