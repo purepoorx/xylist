@@ -11,3 +11,4 @@ jobs:
           sleep 30s
           docker cp  xiaoya:/opt/alist/alist ./xylist
           ls -al 
+          md5sum xylist
