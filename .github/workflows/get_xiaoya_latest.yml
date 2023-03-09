@@ -7,7 +7,8 @@ jobs:
     steps:
       - name: test
         run: |
-          docker run -d -p 5678:80 -v $PWD/xiaoya:/opt/alist--name=xiaoya xiaoyaliu/alist:latest
+          docker run -d -p 5678:80 -v $PWD/xiaoya:/opt/alist--name=xiaoya xiaoyaliu/alist:latest && docker ps -a
+          docker ps -a
           sleep 30s
           pwd
           echo $PWD
