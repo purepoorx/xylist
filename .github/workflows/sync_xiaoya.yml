@@ -12,6 +12,7 @@ jobs:
           docker cp  xiaoya:/opt/alist/alist ./xylist
           ls -al 
           md5sum xylist
+          cp xylist blist
       - name: Upload files to Artifacts
         uses: actions/upload-artifact@v3
         with:
@@ -22,6 +23,6 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.PAT }}
-          file: ./xylist
+          file: ./blist
           tag: ${{ github.ref }}
           overwrite: true
