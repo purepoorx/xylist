@@ -6,4 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: test
-        run: docker version 
+        run: |
+          docker run -d -p 5678:80 -v $PWD/xiaoya:/opt/alist--name=xiaoya xiaoyaliu/alist:latest
+          sleep 30s
+          cd $PWD/xiaoya && ls -al
