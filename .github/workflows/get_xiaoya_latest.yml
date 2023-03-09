@@ -7,13 +7,8 @@ jobs:
     steps:
       - name: test
         run: |
-          docker run -d -p 5678:80 -v $PWD/xiaoya:/opt/alist --name=xiaoya xiaoyaliu/alist:latest && docker ps -a
+          docker run -d -p 5678:80 -v /home/runner/work/xylist/xylist/alist:/opt/alist/alist --name=xiaoya xiaoyaliu/alist:latest && docker ps -a
           docker ps -a
           sleep 1m
           pwd
-          echo $PWD
-          echo $PWD/xiaoya
-          cd $PWD/xiaoya && ls -al
-          cd
-          docker cp  xiaoya:/opt/alist/alist ./
-          ls -al 
+          ls -al
