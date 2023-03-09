@@ -7,7 +7,7 @@ jobs:
     container:
       image: xiaoyaliu/alist:latest
       volumes:
-        - /opt/alist:/mydata
+        - /mydata:/opt/alist
     steps:
       - name: test
         run: cd /mydata && ls -al
