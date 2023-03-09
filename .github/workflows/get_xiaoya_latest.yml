@@ -2,12 +2,8 @@ name: get latest xiaoya alist
 on:
   workflow_dispatch:
 jobs:
-  container-test-job:
+  just-tset:
     runs-on: ubuntu-latest
-    container:
-      image: xiaoyaliu/alist:latest
-      volumes:
-        - /mydata:/opt/alist
     steps:
       - name: test
-        run: cd /mydata && ls -al
+        run: docker version 
