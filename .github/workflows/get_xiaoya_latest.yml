@@ -8,4 +8,4 @@ jobs:
       image: xiaoyaliu/alist:latest
     steps:
       - name: test
-        run: cat /version.txt
+        run: docker ps -a
