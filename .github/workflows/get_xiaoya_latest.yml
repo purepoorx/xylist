@@ -6,6 +6,8 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: xiaoyaliu/alist:latest
+      volumes:
+        - /opt/alist:/mydata
     steps:
       - name: test
-        run: docker ps -a
+        run: cd /mydata && ls -al
