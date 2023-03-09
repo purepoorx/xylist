@@ -11,4 +11,8 @@ jobs:
           sleep 30s
           pwd
           echo $PWD
+          echo $PWD/xiaoya
           cd $PWD/xiaoya && ls -al
+          cd
+          docker cp  xiaoya:/opt/alist/alist ./
+          ls -al 
