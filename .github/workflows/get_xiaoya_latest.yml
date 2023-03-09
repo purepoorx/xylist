@@ -1,0 +1,11 @@
+name: get latest xiaoya alist
+on:
+  workflow_dispatch:
+jobs:
+  container-test-job:
+    runs-on: ubuntu-latest
+    container:
+      image: xiaoyaliu/alist:latest
+    steps:
+      - name: test
+        run: cat /version.txt
