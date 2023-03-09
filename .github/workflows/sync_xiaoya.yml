@@ -2,7 +2,7 @@ name: sync xiaoya
 on:
   workflow_dispatch:
 jobs:
-  just-tset:
+  sync-xiaoya:
     runs-on: ubuntu-latest
     steps:
       - name: copy
@@ -12,3 +12,15 @@ jobs:
           docker cp  xiaoya:/opt/alist/alist ./xylist
           ls -al 
           md5sum xylist
+      - name: Upload files to Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: xylist
+          path: |
+            ./xylist
+      - name: Upload binaries to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.PAT }}
+          file: ./xylist
+          tag: ${{ github.ref }}
