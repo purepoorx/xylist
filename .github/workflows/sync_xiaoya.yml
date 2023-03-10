@@ -42,6 +42,9 @@ jobs:
           git config user.email robot@mail.com
           git clone https://${{ secrets.PAT }}@github.com/purepoorx/xylist.git
           cd xylist
+          ls -al
+          echo '------------'
+          ls -al ../../
           cp -f ./../data.tar.gz ./
           git add data.tar.gz
           git commit -m "Upload Via Github Actions, $(date "+%Y/%m/%d")"
