@@ -9,20 +9,30 @@ jobs:
         run: |
           docker run -d --name=xiaoya xiaoyaliu/alist:latest
           sleep 30s
-          mkdir mydata
-          docker cp xiaoya:/opt/alist/alist ./mydata/
-          docker cp xiaoya:/var/lib/data.zip ./mydata/
-          tar -czvf mydata.tar.gz ./mydata
+          mkdir data
+          docker cp xiaoya:/opt/alist/alist ./data/
+          docker cp xiaoya:/var/lib/data.zip ./data/
+          tar -czvf data_new.tar.gz ./data
       # - name: Upload files to Artifacts
       #   uses: actions/upload-artifact@v3
       #   with:
       #     name: xylist
       #     path: |
       #       ./xylist
-      - name: Upload binaries to release
-        uses: svenstaro/upload-release-action@v2
-        with:
-          repo_token: ${{ secrets.PAT }}
-          file: ./mydata.tar.gz
-          tag: ${{ github.ref }}
-          overwrite: true
+      # - name: Upload binaries to release
+      #   uses: svenstaro/upload-release-action@v2
+      #   with:
+      #     repo_token: ${{ secrets.PAT }}
+      #     file: ./data.tar.gz
+      #     tag: ${{ github.ref }}
+      #     overwrite: true
+
+      - name: upload data
+        uses: actions/checkout@v3
+        run: |
+          git config user.name robot
+          git config user.email robot@mail.com
+          cp -f data_new.tar.gz data.tar.gz
+          git add data.tar.gz
+          git commit -am "update data"
+          git push
