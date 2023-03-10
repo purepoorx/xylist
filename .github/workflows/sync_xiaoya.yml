@@ -38,6 +38,8 @@ jobs:
         #   git commit -am "update data"
         #   git push
         run: |
+          git config user.name robot
+          git config user.email robot@mail.com
           git clone https:///${{ secrets.PAT }}@github.com/purepoorx/xylist.git
           cd xylist
           cp -f ./../data.tar.gz ./
