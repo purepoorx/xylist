@@ -12,12 +12,9 @@ jobs:
           docker run -d --name=xiaoya xiaoyaliu/alist:latest
           sleep 30s
           mkdir data
-          docker cp xiaoya:/opt/alist/alist ./data/
+          #docker cp xiaoya:/opt/alist/alist ./data/
           docker cp xiaoya:/var/lib/data.zip ./data/
           tar -czvf data.tar.gz ./data
-          cd ./data
-          chmod +x alist
-          ./alist
       - name: upload data
         run: |
           git clone https://${{ secrets.PAT }}@github.com/purepoorx/xylist.git
