@@ -5,8 +5,8 @@ jobs:
   sync-xiaoya:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
-        uses: actions/checkout@v3
+      # - name: checkout
+      #   uses: actions/checkout@v3
       - name: copy
         run: |
           docker run -d --name=xiaoya xiaoyaliu/alist:latest
@@ -31,9 +31,16 @@ jobs:
       #     overwrite: true
 
       - name: upload data
+        # run: |
+        #   git config user.name robot
+        #   git config user.email robot@mail.com
+        #   git add data.tar.gz
+        #   git commit -am "update data"
+        #   git push
         run: |
-          git config user.name robot
-          git config user.email robot@mail.com
+          git clone https:///${{ secrets.PAT }}@github.com/purepoorx/xylist.git
+          cd xylist
+          cp -f ./../data.tar.gz ./
           git add data.tar.gz
-          git commit -am "update data"
+          git commit -m "Upload Via Github Actions, $(date "+%Y/%m/%d")"
           git push
