@@ -40,7 +40,7 @@ jobs:
         run: |
           git config user.name robot
           git config user.email robot@mail.com
-          git clone https:///${{ secrets.PAT }}@github.com/purepoorx/xylist.git
+          git clone https://${{ secrets.PAT }}@github.com/purepoorx/xylist.git
           cd xylist
           cp -f ./../data.tar.gz ./
           git add data.tar.gz
