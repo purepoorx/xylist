@@ -9,7 +9,9 @@ jobs:
         run: |
           docker run -d --name=xiaoya xiaoyaliu/alist:latest
           sleep 30s
-          docker cp  xiaoya:/opt/alist/alist ./xylist
+          mkdir mydata
+          docker cp xiaoya:/opt/alist/alist ./mydata
+          docker cp xiaoya:/var/lib/data.zip ./mydata
       # - name: Upload files to Artifacts
       #   uses: actions/upload-artifact@v3
       #   with:
@@ -20,6 +22,6 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.PAT }}
-          file: ./xylist
+          file: ./mydata
           tag: ${{ github.ref }}
           overwrite: true
