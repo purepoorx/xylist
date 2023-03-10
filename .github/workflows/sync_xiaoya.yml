@@ -5,8 +5,6 @@ jobs:
   sync-xiaoya:
     runs-on: ubuntu-latest
     steps:
-      # - name: checkout
-      #   uses: actions/checkout@v3
       - name: copy
         run: |
           docker run -d --name=xiaoya xiaoyaliu/alist:latest
@@ -14,43 +12,14 @@ jobs:
           mkdir data
           docker cp xiaoya:/opt/alist/alist ./data/
           docker cp xiaoya:/var/lib/data.zip ./data/
-          [ -e data.tar.gz ] && rm data.tar.gz
           tar -czvf data.tar.gz ./data
-      # - name: Upload files to Artifacts
-      #   uses: actions/upload-artifact@v3
-      #   with:
-      #     name: xylist
-      #     path: |
-      #       ./xylist
-      # - name: Upload binaries to release
-      #   uses: svenstaro/upload-release-action@v2
-      #   with:
-      #     repo_token: ${{ secrets.PAT }}
-      #     file: ./data.tar.gz
-      #     tag: ${{ github.ref }}
-      #     overwrite: true
-
       - name: upload data
-        # run: |
-        #   git config user.name robot
-        #   git config user.email robot@mail.com
-        #   git add data.tar.gz
-        #   git commit -am "update data"
-        # git push
         run: |
           git clone https://${{ secrets.PAT }}@github.com/purepoorx/xylist.git
           cd xylist
           git config user.name robot
           git config user.email robot@mail.com
-          ls -al
-          echo '------------'
-          ls -al ../../
           cp -f ./../data.tar.gz ./
           git add data.tar.gz
           git commit -m "Upload Via Github Actions, $(date "+%Y/%m/%d")"
           git push
-        # run: |
-        #   git clone https://${{ secrets.PAT }}@github.com/purepoorx/xylist.git
-        #   cd xylist
-        #   git config user.name robot
-        #   git config user.email robot@mail.com
