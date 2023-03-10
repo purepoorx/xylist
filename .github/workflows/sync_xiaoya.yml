@@ -14,7 +14,7 @@ jobs:
           mkdir data
           docker cp xiaoya:/opt/alist/alist ./data/
           docker cp xiaoya:/var/lib/data.zip ./data/
-          rm data.tar.gz
+          [ -e data.tar.gz ] && rm data.tar.gz
           tar -czvf data.tar.gz ./data
       # - name: Upload files to Artifacts
       #   uses: actions/upload-artifact@v3
