@@ -12,7 +12,7 @@ jobs:
           mkdir data
           docker cp xiaoya:/opt/alist/alist ./data/
           docker cp xiaoya:/var/lib/data.zip ./data/
-          tar -czvf data_new.tar.gz ./data
+          tar -czvf data.tar.gz ./data
       # - name: Upload files to Artifacts
       #   uses: actions/upload-artifact@v3
       #   with:
@@ -33,7 +33,7 @@ jobs:
         run: |
           git config user.name robot
           git config user.email robot@mail.com
-          cp -f data_new.tar.gz data.tar.gz
+          cp  -f ./../data_new.tar.gz ./
           git add data.tar.gz
           git commit -am "update data"
           git push
