@@ -10,8 +10,8 @@ jobs:
           docker run -d --name=xiaoya xiaoyaliu/alist:latest
           sleep 30s
           mkdir mydata
-          docker cp xiaoya:/opt/alist/alist ./mydata
-          docker cp xiaoya:/var/lib/data.zip ./mydata
+          docker cp xiaoya:/opt/alist/alist ./mydata/
+          docker cp xiaoya:/var/lib/data.zip ./mydata/
       # - name: Upload files to Artifacts
       #   uses: actions/upload-artifact@v3
       #   with:
