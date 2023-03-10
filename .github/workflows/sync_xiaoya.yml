@@ -50,5 +50,7 @@ jobs:
         #   git commit -m "Upload Via Github Actions, $(date "+%Y/%m/%d")"
         #   git push
         run: |
+          git clone https://${{ secrets.PAT }}@github.com/purepoorx/xylist.git
+          cd xylist
           git config user.name robot
           git config user.email robot@mail.com
