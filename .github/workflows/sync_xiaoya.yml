@@ -52,9 +52,3 @@ jobs:
         run: |
           git config user.name robot
           git config user.email robot@mail.com
-          git clone https://${{ secrets.PAT }}@github.com/purepoorx/xylist.git
-          cd xylist
-          ls -al
-          echo '------------'
-          ls -al ../../
-          cp -f ./../data.tar.gz ./
